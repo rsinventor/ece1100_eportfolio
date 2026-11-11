@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Raunak Singh | Computer Engineering @ Georgia Tech</title>
+  <meta name="description" content="ePortfolio of Raunak Singh, Computer Engineering student at Georgia Tech building hardware and software for edge AI.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="sheet">
+    <header id="site-header"></header>
+
+    <main id="main">
+
+      <!-- Hero ============================================================ -->
+      <section class="section">
+        <div class="container">
+          <span class="ref">Sheet 1 · Top-level schematic</span>
+          <h1>Raunak Singh</h1>
+          <p class="lede">
+            Computer Engineering student at Georgia Tech. I design the hardware and
+            software that run AI at the edge, from the RTL to the app.
+          </p>
+          <div class="btn-row" style="margin-top: 28px;">
+            <a class="btn btn--solid" href="projects.html">View projects &rarr;</a>
+            <a class="btn" href="resume.html">Resume</a>
+          </div>
+        </div>
+
+        <!-- Top-level schematic: inputs feed the "U1" chip, outputs are the site's pages -->
+        <figure class="fig" style="margin-top: 56px; max-width: 860px;">
+          <svg class="schematic" viewBox="0 0 640 350" role="group" aria-labelledby="fig1-cap">
+            <defs>
+              <marker id="arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L6 3 L0 6 Z" fill="#111"/>
+              </marker>
+            </defs>
+
+            <!-- VCC rail -->
+            <path class="w" d="M320 60 V28 M304 28 H336"/>
+            <text class="des" x="344" y="32">VCC = CURIOSITY</text>
+
+            <!-- U1 package -->
+            <text class="des" x="250" y="52">U1</text>
+            <rect class="body" x="250" y="60" width="140" height="240"/>
+            <circle class="w" cx="263" cy="73" r="4"/>
+            <text class="big" x="320" y="172" text-anchor="middle">RAUNAK</text>
+            <text class="big" x="320" y="198" text-anchor="middle">SINGH</text>
+            <text class="des" x="320" y="222" text-anchor="middle">CMPE · GT '30</text>
+
+            <!-- GND -->
+            <path class="w" d="M320 300 V322 M305 322 H335 M310 328 H330 M315 334 H325"/>
+
+            <!-- Inputs (left) -->
+            <g>
+              <polygon class="body" points="20,98 106,98 120,110 106,122 20,122" style="stroke-width:1.6"/>
+              <text class="lbl" x="28" y="114">HARDWARE</text>
+              <path class="w" d="M120 110 H140 h15 l3.75 -8 l7.5 16 l7.5 -16 l7.5 16 l3.75 -8 h15 H250"/>
+              <text class="des" x="160" y="92">R1</text>
+              <text class="des" x="236" y="104">1</text>
+            </g>
+            <g>
+              <polygon class="body" points="20,168 106,168 120,180 106,192 20,192" style="stroke-width:1.6"/>
+              <text class="lbl" x="28" y="184">SOFTWARE</text>
+              <path class="w" d="M120 180 H165 M165 168 V192 M175 168 V192 M175 180 H250"/>
+              <text class="des" x="162" y="160">C1</text>
+              <text class="des" x="236" y="174">2</text>
+            </g>
+            <g>
+              <polygon class="body" points="20,238 106,238 120,250 106,262 20,262" style="stroke-width:1.6"/>
+              <text class="lbl" x="28" y="254">AI / ML</text>
+              <path class="w" d="M120 250 H140 a7.5 7.5 0 0 1 15 0 a7.5 7.5 0 0 1 15 0 a7.5 7.5 0 0 1 15 0 a7.5 7.5 0 0 1 15 0 H250"/>
+              <text class="des" x="162" y="234">L1</text>
+              <text class="des" x="236" y="244">3</text>
+            </g>
+
+            <!-- Outputs (right): each net label links to a page -->
+            <path class="w" d="M390 90 H480"/>
+            <path class="w" d="M390 135 H418 M418 125 V145 L436 135 Z M436 125 V145 M436 135 H480"/>
+            <path class="w" d="M422 121 l8 -10" marker-end="url(#arrow)"/>
+            <path class="w" d="M430 124 l8 -10" marker-end="url(#arrow)"/>
+            <text class="des" x="420" y="160">D1</text>
+            <path class="w" d="M390 180 H480"/>
+            <path class="w" d="M390 225 H480"/>
+            <path class="w" d="M390 270 H480"/>
+            <text class="des" x="396" y="85">4</text>
+            <text class="des" x="396" y="130">5</text>
+            <text class="des" x="396" y="175">6</text>
+            <text class="des" x="396" y="220">7</text>
+            <text class="des" x="396" y="265">8</text>
+
+            <a href="about.html"><polygon class="flag" points="480,78 606,78 620,90 606,102 480,102"/><text class="lbl" x="492" y="94">ABOUT</text></a>
+            <a href="projects.html"><polygon class="flag" points="480,123 606,123 620,135 606,147 480,147"/><text class="lbl" x="492" y="139">PROJECTS</text></a>
+            <a href="goals.html"><polygon class="flag" points="480,168 606,168 620,180 606,192 480,192"/><text class="lbl" x="492" y="184">GOALS</text></a>
+            <a href="resume.html"><polygon class="flag" points="480,213 606,213 620,225 606,237 480,237"/><text class="lbl" x="492" y="229">RESUME</text></a>
+            <a href="contact.html"><polygon class="flag" points="480,258 606,258 620,270 606,282 480,282"/><text class="lbl" x="492" y="274">CONTACT</text></a>
+          </svg>
+          <figcaption id="fig1-cap">FIG. 1 · Top-level schematic of this site. Click any output net to follow it.</figcaption>
+        </figure>
+      </section>
+
+      <!-- Welcome ========================================================= -->
+      <section class="section">
+        <div class="split split--wide-left">
+          <div class="prose">
+            <span class="ref">Welcome</span>
+            <h2>Hi, I'm Raunak.</h2>
+            <p>
+              I'm a first-year Computer Engineering student at Georgia Tech (Class of 2030).
+              I've been building hardware projects for five years. The list runs from a
+              bike-mounted pedestrian detector on an FPGA to a RISC-V-style processor I took
+              from RTL all the way to GDSII.
+            </p>
+            <p>
+              I laid this site out like a schematic. Each page is a block in the circuit,
+              and the net labels in the drawing above link to them.
+            </p>
+          </div>
+          <div class="readouts" aria-label="Quick facts">
+            <div class="readout"><div class="readout-value">11</div><div class="readout-label">PROJECTS BUILT SINCE 2021</div></div>
+            <div class="readout"><div class="readout-value">5,000</div><div class="readout-label">CPU CORES RUNNING MY PRINCETON SIMULATIONS</div></div>
+            <div class="readout"><div class="readout-value">#1</div><div class="readout-label">IN THE U.S., USACO SILVER (FEB 2025)</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured projects =============================================== -->
+      <section class="section">
+        <div class="section-head">
+          <span class="ref">Selected work</span>
+          <h2>Featured projects</h2>
+        </div>
+        <div class="grid" data-projects="featured"></div>
+        <div class="btn-row" style="margin-top: 40px;">
+          <a class="btn" href="projects.html">All projects &rarr;</a>
+        </div>
+      </section>
+
+      <!-- Call to action ================================================= -->
+      <section class="section section--tight">
+        <div class="split">
+          <div>
+            <span class="ref">Open to opportunities</span>
+            <h2>Seeking a Summer 2027 internship in software or embedded systems.</h2>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn--solid" href="contact.html">Get in touch</a>
+            <a class="btn" href="https://www.linkedin.com/in/raunak-singh-67415631a/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+  </div>
+
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/projects.js"></script>
+</body>
+</html>

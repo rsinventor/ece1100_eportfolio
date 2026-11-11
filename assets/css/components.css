@@ -1,0 +1,300 @@
+/* ==========================================================================
+   components.css — reusable schematic-styled pieces
+   Net labels, buttons, wire dividers, IC "chip" cards, figures, BOM tables,
+   stat readouts, the career timeline, and the resume viewer.
+   ========================================================================== */
+
+/* ---- Net label (used for nav links and tags) -----------------------------
+   A schematic net label is a flag with a pointed end. Two stacked clip-paths
+   give a black outline around a white face. */
+.net {
+  display: inline-block;
+  padding: var(--wire);
+  background: var(--ink);
+  clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.net > span {
+  display: block;
+  padding: 9px 14px 9px 18px;
+  background: var(--paper);
+  color: var(--ink);
+  clip-path: polygon(9px 0, 100% 0, 100% 100%, 9px 100%, 0 50%);
+  transition: background 0.15s, color 0.15s;
+}
+.net:hover > span,
+.net[aria-current="page"] > span {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---- Buttons ------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px;
+  border: var(--wire) solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 0.82rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn:hover,
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.btn--solid { background: var(--ink); color: var(--paper); }
+.btn--solid:hover { background: var(--paper); color: var(--ink); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ---- Wire divider with a resistor in the middle -------------------------- */
+hr.wire {
+  border: 0;
+  height: 24px;
+  margin: 40px 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='24' viewBox='0 0 90 24'%3E%3Crect x='14' width='62' height='24' fill='white'/%3E%3Cpath d='M0 12h22l3.75-8 7.5 16 7.5-16 7.5 16 7.5-16 7.5 16 3.75-8H90' fill='none' stroke='%23111' stroke-width='1.5'/%3E%3C/svg%3E") center / 90px 24px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) center / 100% 1.5px no-repeat;
+}
+
+/* ---- Chip card (an IC package) --------------------------------------------
+   Border = package outline, ::before = pin-1 dot, ::after = side pins,
+   .chip-ref = the reference designator printed above it (U1, U2 ...). */
+.chip {
+  position: relative;
+  border: var(--wire) solid var(--ink);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+}
+.chip::before {
+  content: "";
+  position: absolute;
+  top: 9px; left: 9px;
+  width: 8px; height: 8px;
+  border: var(--wire) solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+  z-index: 2;
+}
+.chip::after {
+  content: "";
+  position: absolute;
+  top: 20px; bottom: 20px;
+  left: -9px; right: -9px;
+  background:
+    repeating-linear-gradient(to bottom, var(--ink) 0 1.5px, transparent 1.5px 22px) left / 8px 100% no-repeat,
+    repeating-linear-gradient(to bottom, var(--ink) 0 1.5px, transparent 1.5px 22px) right / 8px 100% no-repeat;
+  pointer-events: none;
+}
+.chip-ref {
+  position: absolute;
+  top: -0.8em; right: 14px;
+  padding: 0 6px;
+  background: var(--paper);
+  font: 500 0.75rem var(--font-mono);
+  letter-spacing: 0.1em;
+  z-index: 2;
+}
+.chip-media {
+  aspect-ratio: 4 / 3;
+  border-bottom: var(--wire) solid var(--ink);
+  overflow: hidden;
+  background: #f4f4f4;
+}
+.chip-media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.05);
+  transition: filter 0.3s;
+}
+.chip:hover .chip-media img { filter: none; }
+/* Touch screens can't hover, so show photos in color there */
+@media (hover: none) { .chip-media img { filter: none; } }
+.chip-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.chip-body h3 { font-size: 1.15rem; margin-bottom: 6px; }
+.chip-meta { font: 0.75rem var(--font-mono); color: var(--ink-3); margin-bottom: 10px; letter-spacing: 0.04em; }
+.chip-body p { font-size: 0.97rem; color: var(--ink-2); }
+.chip-foot { margin-top: auto; padding-top: 14px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.chip-link { font: 500 0.78rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.chip--feature { grid-column: 1 / -1; }
+.chip--feature .chip-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+.chip--feature .chip-media { border-bottom: 0; border-right: var(--wire) solid var(--ink); aspect-ratio: auto; min-height: 260px; }
+
+/* Small tags + award badge */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0 0 4px; }
+.tags li {
+  margin: 0;
+  font: 0.7rem var(--font-mono);
+  border: 1px solid var(--hair);
+  padding: 2px 7px;
+  color: var(--ink-2);
+}
+.badge {
+  display: inline-block;
+  font: 600 0.68rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3px 8px;
+}
+
+/* ---- Figures ------------------------------------------------------------- */
+.fig { margin: 0; }
+.fig img,
+.fig .fig-frame { border: var(--wire) solid var(--ink); width: 100%; }
+.fig figcaption {
+  margin-top: 8px;
+  font: 0.75rem var(--font-mono);
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+.fig--portrait img { aspect-ratio: 1; object-fit: cover; max-width: 340px; }
+
+/* ---- Schematic drawings (inline SVG) ------------------------------------- */
+.schematic { width: 100%; height: auto; overflow: visible; }
+.schematic .w { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: square; stroke-linejoin: miter; }
+.schematic .fill { fill: var(--ink); }
+.schematic .body { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.schematic text { font-family: var(--font-mono); fill: var(--ink); }
+.schematic .lbl { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; }
+.schematic .des { font-size: 11px; fill: var(--ink-3); }
+.schematic .big { font-size: 20px; font-weight: 600; letter-spacing: 0.04em; }
+.schematic a { text-decoration: none; cursor: pointer; }
+.schematic a .flag { fill: var(--paper); stroke: var(--ink); stroke-width: 1.6; transition: fill 0.15s; }
+.schematic a:hover .flag,
+.schematic a:focus .flag { fill: var(--ink); }
+.schematic a:hover text,
+.schematic a:focus text { fill: var(--paper); }
+
+/* ---- Stat readouts (like a multimeter) ----------------------------------- */
+.readouts { border: var(--wire) solid var(--ink); }
+.readout { padding: 18px 20px; }
+.readout + .readout { border-top: 1px solid var(--ink); }
+.readout-value { font: 600 1.9rem/1.1 var(--font-mono); letter-spacing: -0.02em; }
+.readout-label { font: 0.75rem var(--font-mono); color: var(--ink-3); margin-top: 6px; }
+
+/* ---- BOM table (bill of materials) -------------------------------------- */
+.table-wrap { overflow-x: auto; }
+.bom {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.bom th,
+.bom td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 14px;
+  border: 1px solid var(--ink);
+}
+.bom th {
+  font: 600 0.72rem var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+}
+.bom td:first-child { font-family: var(--font-mono); font-size: 0.82rem; white-space: nowrap; }
+
+/* ---- Experience entries -------------------------------------------------- */
+.entry { padding-left: 22px; border-left: var(--wire) solid var(--ink); position: relative; }
+.entry::before {
+  content: "";
+  position: absolute;
+  left: -6px; top: 8px;
+  width: 10px; height: 10px;
+  background: var(--ink);
+  border-radius: 50%;
+}
+.entry + .entry { margin-top: 32px; }
+.entry h3 { margin-bottom: 2px; }
+.entry-meta { font: 0.78rem var(--font-mono); color: var(--ink-3); margin-bottom: 10px; }
+
+/* ---- Career timeline: a signal chain of stages ------------------------- */
+.chain { list-style: none; padding: 0; margin: 0; position: relative; }
+.chain::before {
+  content: "";
+  position: absolute;
+  left: 15px; top: 0; bottom: 0;
+  width: var(--wire);
+  background: var(--ink);
+}
+.stage { position: relative; padding-left: 56px; margin: 0 0 40px; }
+.stage:last-child { margin-bottom: 0; }
+.stage-node {
+  position: absolute;
+  left: 0; top: 2px;
+  width: 32px; height: 32px;
+  border: var(--wire) solid var(--ink);
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  font: 600 0.7rem var(--font-mono);
+}
+.stage--goal .stage-node { background: var(--ink); color: var(--paper); }
+.stage-when { font: 0.78rem var(--font-mono); color: var(--ink-3); letter-spacing: 0.06em; }
+.stage h3 { margin: 2px 0 8px; }
+.stage-box { border: 1px solid var(--ink); padding: 18px 22px; background: var(--paper); }
+.stage-box ul { margin-bottom: 0; }
+@media (max-width: 520px) {
+  .stage { padding-left: 46px; }
+  .stage-box { padding: 14px 16px; }
+  .stage-box ul { padding-left: 1em; }
+}
+
+/* ---- Spec box (datasheet-style key facts) ------------------------------ */
+.spec { border: var(--wire) solid var(--ink); }
+.spec-title {
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 0.75rem var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+}
+.spec dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); }
+.spec dt, .spec dd { padding: 8px 14px; border-top: 1px solid var(--hair); margin: 0; font-size: 0.92rem; }
+.spec dt { font: 500 0.75rem var(--font-mono); color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 10px; }
+
+/* ---- Resume viewer ------------------------------------------------------ */
+.resume-frame {
+  width: 100%;
+  height: min(1100px, 130vh);
+  border: var(--wire) solid var(--ink);
+  background: #f4f4f4;
+}
+.resume-fallback { padding: 24px; font-family: var(--font-mono); font-size: 0.9rem; }
+
+/* ---- Contact list ------------------------------------------------------- */
+.contact-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--ink); }
+.contact-list li {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ink);
+  align-items: baseline;
+}
+.contact-list .ref { margin: 0; }
+.contact-list a { font-size: 1.1rem; word-break: break-word; }
+@media (max-width: 520px) {
+  .contact-list li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .chip--feature .chip-inner { grid-template-columns: minmax(0, 1fr); }
+  .chip--feature .chip-media { border-right: 0; border-bottom: var(--wire) solid var(--ink); min-height: 200px; }
+}
+@media (max-width: 860px) {
+  .chip--feature .chip-inner { grid-template-columns: minmax(0, 1fr); }
+  .chip--feature .chip-media { border-right: 0; border-bottom: var(--wire) solid var(--ink); }
+}

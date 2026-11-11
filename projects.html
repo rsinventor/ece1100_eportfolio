@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | Raunak Singh</title>
+  <meta name="description" content="Technical projects by Raunak Singh: edge AI, embedded systems, digital design, and full-stack software.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body data-page="projects">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="sheet">
+    <header id="site-header"></header>
+
+    <main id="main">
+
+      <section class="section">
+        <div class="container">
+          <span class="ref">Sheet 3 · Projects</span>
+          <h1>Projects</h1>
+          <p class="lede">
+            Everything I've built, newest first. Most started as contest entries or
+            research questions.
+          </p>
+        </div>
+      </section>
+
+      <!-- Discovery Project Feature (ECE 1100) ============================ -->
+      <section class="section">
+        <div class="section-head">
+          <span class="ref">Feature · ECE 1100</span>
+          <h2>Discovery Project</h2>
+        </div>
+        <article class="chip chip--feature">
+          <span class="chip-ref">U0</span>
+          <div class="chip-inner">
+            <div class="chip-media">
+              <!-- Replace this drawing with your own project photo:
+                   <img src="assets/img/discovery-cover.jpg" alt="..."> -->
+              <svg class="schematic" viewBox="0 0 400 260" role="img" aria-label="Placeholder schematic for the Discovery Project">
+                <rect class="body" x="140" y="80" width="120" height="100"/>
+                <text class="lbl" x="200" y="134" text-anchor="middle">IN PROGRESS</text>
+                <path class="w" d="M40 130 H140 M260 130 H360"/>
+                <circle class="fill" cx="40" cy="130" r="4"/>
+                <path class="w" d="M360 118 V142 M368 122 V138"/>
+                <text class="des" x="140" y="72">U0</text>
+              </svg>
+            </div>
+            <div class="chip-body">
+              <div class="chip-meta">FALL 2026 · ECE 1100</div>
+              <h3>Open-source security camera</h3>
+              <p>
+                An ESP32-based camera that detects a person in view, sends a notification,
+                and saves footage to an SD card. I'm building it now, and the full
+                write-up will be posted before the Discovery Project Showcase.
+              </p>
+              <div class="chip-foot">
+                <a class="chip-link" href="discovery.html">Read the feature &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- All projects (rendered from assets/js/projects-data.js) ========== -->
+      <section class="section">
+        <div class="section-head">
+          <span class="ref">Portfolio</span>
+          <h2>All projects</h2>
+          <p class="muted" style="max-width: 60ch;">
+            On a computer, hover over a card to see its photo in color. Projects with a
+            Hackster write-up link to the full build log, with code, wiring diagrams, and
+            parts lists.
+          </p>
+        </div>
+        <div class="grid" data-projects="all"></div>
+      </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+  </div>
+
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/projects.js"></script>
+</body>
+</html>
